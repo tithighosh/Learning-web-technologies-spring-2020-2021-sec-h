@@ -21,6 +21,5 @@
 				echo "invalid user";
 			}
 		}
-
 	}
 ?>

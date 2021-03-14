@@ -1,109 +1,87 @@
 <?php
-  if(isset($_POST['submit']))
-  {
 
-        $name = $_POST['name'];
-        $email = $_POST['email'];
+    session_start();
+    
+    if(isset($_POST['submit']))
+    {
+        
+        
+
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $gender = $_POST['gender'];
-        $confirm_password =$_POST['confirm_password'];
-        $dob = $_POST['Bob']
 
-
-         if($name == "" && $email == "" && $username == "" && $password == ""  && $dd == "" && $mm == "" && $yyyy == ""){
-          echo "null submission";
-         }
-        elseif( $password==$confirm_password)
+        if ($username == "" || $password == "")
         {
-          echo "Successfully submitted";
-
+            echo "Null Submission";
         }
-        else 
+        else
         {
-          echo "Invalid";
+            if (strlen($username)<3) 
+                {
+                    echo "UserName must contain at least two (2) characters";           
+                }
+            elseif (strlen($password)<8)
+
+                {
+
+                    echo "Password must not be less than eight(8) characters";
+                }
+            
+
+            else
+            {
+                    if (ord($username >= 97 && ord($username) <= 122) || (ord($username) >= 65 && ord($username) <= 90) || (ord($username) >= 48 && ord($username) <= 57) || ord($username == 39) || ord($username == 45) || ord($username == 95)) 
+
+                    {
+                        echo "<i>Submission Succefull</i></b><br>";
+                        header('location: Login.html');
+                    }
+
+                    else
+                    {
+                        echo " User Name can contain alpha numeric characters, period,dash or underscore only";
+                    }
+            }
+                
         }
-
-  }
-
-
+    }
 ?>
 
 <html>
 <head>
      
-    <title>Registration</title>
+    <title>registration</title>
 </head>
 <body>
-    <fieldset>
-        <table width='100%' >
-            <tr>
-            <td>
-                    <img src="logo.png" alt="Italian Trulli" height='60px'>
-                 
-                </td> 
-                <td align='right'>
-                    <nav>
-                        <a href='./home.php'>Home</a> |
-                        <a href='./login.php'>Log In</a> |
-                        <a href='./reg.php'>Registration</a>
-                    </nav>
-                </td>
-            </tr>
-        </table>
-    </fieldset>
-    <fieldset>
-        <br> <br><br>
-        <label>
-            <h1>
-            <b>
-                <form method="post" action="">
-      <fieldset>
-        <legend><b>REGISTRATION</b></legend>
+    
+        <legend><b><h1>REGISTRATION</h1></b></legend>
         <table>
-                      
-            <tr>
-              <td>Name</td>
-              <td>:<input type="text" name="name" value=""></td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>:<input type="email" name="email" value=""></td>
-            </tr>
-            <tr>
-              <td>User Name</td>
-              <td>:<input type="text" name="username" value=""></td>
-            </tr>
-            <tr>
-              <td>Password</td>
-              <td>:<input type="password" name="password" value=""></td>
-            </tr>
-            <tr>
-              <td>Confirm Password</td>
-              <td>:<input type="password" name="confirm_password" value=""></td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <fieldset>
-                    <legend>Gender</legend>
-                    <input type="radio" name="gender" value="m">Male
-                    <input type="radio" name="gender" value="f">Female
-                    <input type="radio" name="gender" value="o">Other
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td >
-                
-                  Date of Birth
-                    <td>:<input type="date" name="dob" value="" placeholder="dob" /></td>
-               
-              </td>
+          <tr>
+            <td>ID:</td>
+            <td><input type="text" name="id" value=""></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" value=""></td>
+          </tr>
+          <tr>
+            <td>Confirm Password:</td>
+            <td><input type="cpassword" name="cpassword" value=""></td>
+          </tr>
+          <tr>
+            <td>Name:</td>
+            <td><input type="name" name="name" value=""></td>
+          </tr>
+          <br>
+         
 
         </table>
       <hr style="width:25%;text-align:left;margin-left:0">
-         <input type="submit" name="submit" value="Submit"> 
-        
+            <input type="checkbox" name="checkbox" value="checkbox" >User Type
+        <br>
+        <br>
+        <input type="Signup" name="signup" value="signup"> 
+        <a href='./D_Forgot_Password.php'><u>SignIn</u></a>
         
       
 </body>
